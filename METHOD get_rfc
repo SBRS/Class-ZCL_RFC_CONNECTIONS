@@ -1,0 +1,66 @@
+METHOD get_rfc.
+
+    DATA prod_syst TYPE abap_bool.
+
+    prod_syst = is_prod_sys( ).
+
+    IF i_system = 'HCM'.
+
+      IF prod_syst = abap_true.
+        r_rfc = 'PHRCLNT700'.
+      ELSE.
+        r_rfc = 'THRCLNT700'.
+      ENDIF.
+
+*      IF sy-sysid = 'DEV' OR sy-sysid = 'TST' OR sy-sysid = 'ARC' OR sy-sysid = 'QAS'.
+*
+*        r_rfc = 'THRCLNT700'.
+*
+*      ELSEIF sy-sysid = 'PRD'.
+*
+*        r_rfc = 'PHRCLNT700'.
+*
+*      ENDIF.
+
+
+    ELSEIF i_system = 'BW'.
+
+      IF prod_syst = abap_true.
+        r_rfc = 'BW7CLNT200'.
+      ELSE.
+        r_rfc = 'TBWCLNT200'.
+      ENDIF.
+
+*      IF sy-sysid = 'DEV' OR sy-sysid = 'TST' OR sy-sysid = 'ARC' OR sy-sysid = 'QAS'.
+*
+*        r_rfc = 'TBWCLNT200'.
+*
+*      ELSEIF sy-sysid = 'PRD'.
+*
+*        r_rfc = 'BW7CLNT200'.
+*
+*      ENDIF.
+
+
+    ELSEIF i_system = 'SM'.
+
+      IF prod_syst = abap_true.
+        r_rfc = 'PSMCLNT001'.
+      ELSE.
+        r_rfc = 'DSMCLNT001'.
+      ENDIF.
+
+*      IF sy-sysid = 'DEV' OR sy-sysid = 'TST' OR sy-sysid = 'ARC' OR sy-sysid = 'QAS'.
+*
+*        r_rfc = 'DSMCLNT001'.
+*
+*      ELSEIF sy-sysid = 'PRD'.
+*
+*        r_rfc = 'PSMCLNT001'.
+*
+*      ENDIF.
+
+
+    ENDIF.
+
+  ENDMETHOD.

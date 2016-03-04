@@ -1,0 +1,9 @@
+  METHOD is_prod_sys.
+
+    IF sy-sysid = 'PRD'.
+      r_prod_flag = abap_true.
+    ELSE.
+      r_prod_flag = abap_false.
+    ENDIF.
+
+  ENDMETHOD.

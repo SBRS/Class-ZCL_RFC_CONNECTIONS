@@ -1,0 +1,5 @@
+  method GET_HCM.
+
+    R_RFC = GET_RFC( 'HCM' ).
+
+  endmethod.
